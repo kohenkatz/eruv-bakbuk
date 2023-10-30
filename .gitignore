@@ -1,0 +1,26 @@
+# Compiled model formats
+*.stl
+*.fbx
+*.obj
+*.3mf
+*.stp
+*.step
+*.iges
+*.off
+*.ply
+*.vrml
+*.wrl
+
+# Slicer formats for various printers
+*.g
+*.gcode
+*.s3g
+*.x3g
+*.amf
+*.cnc
+*.ngc
+*.tap
+*.pm3n
+*.photon
+*.ctb
+*.cbddlp
