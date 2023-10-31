@@ -29,3 +29,18 @@ module Sched40Pipe(length, d) {
         cylinder(d=id, h=length+1, center=true);
     };
 }
+
+module Sched40PipeOuterPart(length, d, forCutout = false, thickness = 0.5) {
+    od = getPipeODSched40(d);
+    id = getPipeIDSched40(d);
+    wallThickness = (od-id) * thickness;
+ 
+    difference() {
+        if (forCutout) {
+            cylinder(d=od+1, h=length+1, center=true);
+        } else {
+            cylinder(d=od, h=length, center=true);
+        }
+        cylinder(d=od-wallThickness, h=length+1, center=true);
+    };
+}
