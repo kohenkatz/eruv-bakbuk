@@ -5,7 +5,7 @@ Pipe();
 module Pipe(length = 210, pipeDiam = 2, $fn = 100) {
     od = getPipeODSched40(pipeDiam);
     id = getPipeIDSched40(pipeDiam);
-    
+
     baseThickness = 5;
 
     difference() {
@@ -43,17 +43,22 @@ module TopBarCutout(pipeLength, pipeDiam, topBarHeight = 10, topBarWidth = .75) 
             cube([od+1, topBarWidth, topBarHeight+1], center=true);
 }
 
-module MirrorBase(pipeLength, pipeDiam, baseThickness) {
+module MirrorBase(pipeLength, pipeDiam, baseThickness, angle = 35) {
     od = getPipeODSched40(pipeDiam);
     id = getPipeIDSched40(pipeDiam);
     holeDiam = od;
     pipeBottom = -1 * (pipeLength / 2);
-    mirrorBaseZ = pipeBottom + (holeDiam/2) + baseThickness;
+    mirrorBaseZ = pipeBottom + (holeDiam/2);
 
     translate([0, 0, mirrorBaseZ])
-        intersection() {
-            rotate([45, 0, 0])
-                cube([od*2, od*2, baseThickness], true);
-            cylinder(d=od, h=pipeLength, center=true);
+        difference() {
+            intersection() {
+                rotate([angle, 0, 0])
+                    cube([od*2, od*2, baseThickness], true);
+                cylinder(d=od, h=pipeLength, center=true);
+            }
+            translate([0, 0, 3])
+                rotate([angle, 0, 0])
+                    cylinder(d=id, h=2, center=true);
         }
 }
