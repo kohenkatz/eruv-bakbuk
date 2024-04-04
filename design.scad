@@ -1,4 +1,5 @@
 include <BOSL2/std.scad>;
+include <text_on/text_on.scad>;
 include <pipe_defs.scad>;
 
 Pipe();
@@ -11,6 +12,17 @@ module Pipe(length = 210, pipeDiam = 2, $fn = 100) {
     id = getPipeIDSched40(pipeDiam);
 
     baseThickness = 5;
+    
+    text1 = ([
+        "Designed and produced",
+        "by Rabbi Micah Shotkin",
+        "and Dr. Moshe Katz",
+    ]);
+    text2 = ([
+        "Rabbi Micah Shotkin",
+        "Eruv design, construction, and repair",
+        "(973) 330-6355 / shotkin@gmail.com"
+    ]);
 
     difference() {
         Sched40Pipe(length, pipeDiam);
@@ -18,6 +30,12 @@ module Pipe(length = 210, pipeDiam = 2, $fn = 100) {
         PipeSideHole(length, pipeDiam, baseThickness * 4);
 
         TopBarCutout(length, pipeDiam);
+        
+        up(40)
+        multi_text_on_cylinder(text1, 3, od, offsetlines=3);
+        
+        up(40)
+        multi_text_on_cylinder(text2, 3, od, offsetlines=-2);
     };
 
     MirrorBase(length, pipeDiam, baseThickness);
@@ -86,5 +104,15 @@ module TopBar(topBarHeight = 10, topBarWidth = 1, pipeDiam = 2, wings = true,for
             cube([od+1, 10, topBarHeight], center = true);
             Sched40PipeOuterPart(topBarHeight, pipeDiam, forCutout, .5);
         }
+    }
+}
+
+module multi_text_on_cylinder(lines, size, od, offsetlines = 0) {
+    lineheight = size * 4;
+    starteast = offsetlines != 0 ? (offsetlines * lineheight) : ((((len(lines)+1) / 2)-1) * lineheight);
+
+    union() {
+        for (i = [0 : len(lines)-1])
+          text_on_cylinder(lines[i],locn_vec=[0,0,0],r=(od/2),h=40,rotate=90, eastwest=starteast-(lineheight*i),cylinder_center=true,font="Bahnschrift:style=SemiCondensed", size=size);
     }
 }
