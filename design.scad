@@ -1,8 +1,9 @@
+include <BOSL2/std.scad>;
 include <pipe_defs.scad>;
 
 Pipe();
 
-//translate([0, 0, 120])
+//up(120)
 //TopBar(wings=true);
 
 module Pipe(length = 210, pipeDiam = 2, $fn = 100) {

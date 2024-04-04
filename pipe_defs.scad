@@ -1,3 +1,5 @@
+include <BOSL2/std.scad>;
+
 function getPipeODSched40(inches) = lookup(inches, [
     [1   , 33.4 ],
     [1.25, 42.16],
@@ -24,10 +26,7 @@ module Sched40Pipe(length, d) {
     od = getPipeODSched40(d);
     id = getPipeIDSched40(d);
  
-    difference() {
-        cylinder(d=od, h=length, center=true);
-        cylinder(d=id, h=length+1, center=true);
-    };
+    tube(h=length, od=od, id=id);
 }
 
 module Sched40PipeOuterPart(length, d, forCutout = false, thickness = 0.5) {
