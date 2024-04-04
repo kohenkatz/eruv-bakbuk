@@ -4,8 +4,8 @@ include <pipe_defs.scad>;
 
 Pipe();
 
-//up(120)
-//TopBar(wings=true);
+up(120)
+TopBar(wings=true);
 
 module Pipe(length = 210, pipeDiam = 2, $fn = 100) {
     od = getPipeODSched40(pipeDiam);
