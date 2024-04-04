@@ -66,7 +66,7 @@ module MirrorBase(pipeLength, pipeDiam, baseThickness, angle = 35) {
         }
 }
 
-module TopBar(topBarHeight = 10, topBarWidth = .75, pipeDiam = 2, wings = true,forCutout = false, $fn = 100) {
+module TopBar(topBarHeight = 10, topBarWidth = 1, pipeDiam = 2, wings = true,forCutout = false, $fn = 100) {
     od = getPipeODSched40(pipeDiam);
     id = getPipeIDSched40(pipeDiam);
 
