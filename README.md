@@ -13,3 +13,12 @@ Some assembly is required after printing. See instructions below.
 ## How to use
 
 1. TODO
+
+## Model development
+
+These models were designed in OpenSCAD version 2021.01.
+
+They require the following OpenSCAD libraries to be present on your computer:
+
+- [BOSL2](https://github.com/BelfrySCAD/BOSL2)
+- [text_on](https://github.com/brodykenrick/text_on_OpenSCAD)
