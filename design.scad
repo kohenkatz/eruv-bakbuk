@@ -12,7 +12,7 @@ module Pipe(length = 210, pipeDiam = 2, $fn = 100) {
     id = getPipeIDSched40(pipeDiam);
 
     baseThickness = 5;
-    
+
     text1 = ([
         "Designed and produced",
         "by Rabbi Micah Shotkin",
@@ -30,13 +30,13 @@ module Pipe(length = 210, pipeDiam = 2, $fn = 100) {
         PipeSideHole(length, pipeDiam, baseThickness * 4);
 
         TopBarCutout(length, pipeDiam);
-        
-        up(40)
-        multi_text_on_cylinder(text1, 3, od, offsetlines=3);
-        
-        up(40)
-        multi_text_on_cylinder(text2, 3, od, offsetlines=-2);
     };
+
+    up(40)
+    multi_text_on_cylinder(text1, 3, od, offsetlines=3);
+
+    up(40)
+    multi_text_on_cylinder(text2, 3, od, offsetlines=-2);
 
     MirrorBase(length, pipeDiam, baseThickness);
 }

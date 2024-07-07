@@ -25,7 +25,7 @@ function getPipeIDSched40(inches) = lookup(inches, [
 module Sched40Pipe(length, d) {
     od = getPipeODSched40(d);
     id = getPipeIDSched40(d);
- 
+
     tube(h=length, od=od, id=id);
 }
 
@@ -33,7 +33,7 @@ module Sched40PipeOuterPart(length, d, forCutout = false, thickness = 0.5) {
     od = getPipeODSched40(d);
     id = getPipeIDSched40(d);
     wallThickness = (od-id) * thickness;
- 
+
     difference() {
         if (forCutout) {
             cylinder(d=od+1, h=length+1, center=true);
